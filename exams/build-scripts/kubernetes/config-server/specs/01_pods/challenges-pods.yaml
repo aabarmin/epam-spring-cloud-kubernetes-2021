@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenges-provider-deployment
+  namespace: challenges-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: challenges-provider
+  template:
+    metadata:
+      labels:
+        name: challenges-provider
+    spec:
+      containers:
+        - name: challenges-provider-container
+          image: application/examinator:layered
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVER_PORT
+              value: "8080"
+            - name: EUREKA_CLIENT_ENABLED
+              value: "false"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-math-deployment
+  namespace: challenges-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: backend-math
+  template:
+    metadata:
+      labels:
+        name: backend-math
+    spec:
+      containers:
+        - name: challenges-provider-math-container
+          image: application/provider-math:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: EUREKA_CLIENT_ENABLED
+              value: "false"
+            - name: SERVER_PORT
+              value: "8080"
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/readiness
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-history-deployment
+  namespace: challenges-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: backend-history
+  template:
+    metadata:
+      labels:
+        name: backend-history
+    spec:
+      containers:
+        - name: challenges-provider-history-container
+          image: application/provider-history:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: EUREKA_CLIENT_ENABLED
+              value: "false"
+            - name: SERVER_PORT
+              value: "8080"

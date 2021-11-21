@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: provider-math
+  namespace: challenges-demo
+spec:
+  selector:
+    name: backend-math
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: provider-history
+  namespace: challenges-demo
+spec:
+  selector:
+    name: backend-history
+  ports:
+    - port: 8080
+      targetPort: 8080
