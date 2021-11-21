@@ -5,7 +5,12 @@ import com.naya.exams.model.Exercise;
 /**
  * @author Evgeny Borisov
  */
-@FunctionalInterface
 public interface MathService {
     Exercise getRandomExercise();
+
+    /**
+     * Get max available value in the exercise.
+     * @return
+     */
+    int getMaxAvailableNumber();
 }

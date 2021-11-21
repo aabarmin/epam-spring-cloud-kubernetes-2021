@@ -25,6 +25,11 @@ public class MathServiceImpl implements MathService {
         int b = random.nextInt(max);
         return Exercise.builder().question(a + " + " + b + " = ?").answer(String.valueOf(a + b)).build();
     }
+
+    @Override
+    public int getMaxAvailableNumber() {
+        return max;
+    }
 }
 
 

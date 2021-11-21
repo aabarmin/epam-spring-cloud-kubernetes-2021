@@ -10,8 +10,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 public class MathApp {
-
-
     public static void main(String[] args) {
         SpringApplication.run(MathApp.class);
     }
