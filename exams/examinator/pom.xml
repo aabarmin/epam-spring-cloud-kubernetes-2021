@@ -19,7 +19,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.naya.exams</groupId>
-			<artifactId>frontend-starter</artifactId>
+			<artifactId>front-end-starter</artifactId>
 		</dependency>
 
 		<dependency>

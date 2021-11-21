@@ -66,7 +66,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.naya.exams</groupId>
-				<artifactId>frontend-starter</artifactId>
+				<artifactId>front-end-starter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -79,13 +79,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>
