@@ -32,9 +32,6 @@ public class ExamComposerController {
         this.restTemplate = restTemplate;
     }
 
-
-
-
     @PostMapping("/exam")
     public Exam createExam(@RequestBody Map<String, Integer> examSpec) {
         List<Section> sections = examSpec.entrySet().stream().map(entry -> {
