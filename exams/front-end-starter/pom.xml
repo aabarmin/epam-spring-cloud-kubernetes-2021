@@ -5,7 +5,7 @@
 
 	<groupId>com.naya.exams</groupId>
 	<artifactId>frontend-starter</artifactId>
-	<version>1.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>frontend-starter</name>

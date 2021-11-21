@@ -65,6 +65,12 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>com.naya.exams</groupId>
+				<artifactId>frontend-starter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>

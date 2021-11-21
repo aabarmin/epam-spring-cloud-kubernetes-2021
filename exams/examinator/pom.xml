@@ -18,6 +18,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.naya.exams</groupId>
+			<artifactId>frontend-starter</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
@@ -26,11 +31,6 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.naya.exams</groupId>
-			<artifactId>frontend-starter</artifactId>
-			<version>1.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -53,6 +53,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
