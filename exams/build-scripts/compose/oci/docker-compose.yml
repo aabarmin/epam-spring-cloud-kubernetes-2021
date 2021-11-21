@@ -1,0 +1,40 @@
+version: '2.4'
+
+services:
+  service-discovery:
+    image: application/discovery-service:oci
+    environment:
+      SERVER_PORT: 8080
+    ports:
+      - 8761:8080
+
+  service-config:
+    image: application/config-server:oci
+    environment:
+      SERVER_PORT: 8080
+      DISCOVERY_URL: http://service-discovery:8080/eureka/
+
+  examinator:
+    image: application/examinator:oci
+    environment:
+      SERVER_PORT: 8080
+      DISCOVERY_URL: http://service-discovery:8080/eureka/
+      CONFIG_URL: http://service-config:8080/
+    ports:
+      - 8093:8080
+
+  provider-math:
+    image: application/provider-math:oci
+    environment:
+      SERVER_PORT: 8080
+      DISCOVERY_URL: http://service-discovery:8080/eureka/
+      CONFIG_URL: http://service-config:8080/
+
+  provider-theology:
+    image: application/provider-theology:oci
+    environment:
+      SERVER_PORT: 8080
+      DISCOVERY_URL: http://service-discovery:8080/eureka/
+      CONFIG_URL: http://service-config:8080/
+    ports:
+      - 8083:8080

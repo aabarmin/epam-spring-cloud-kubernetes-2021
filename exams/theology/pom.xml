@@ -45,6 +45,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<imageName>application/provider-theology:oci</imageName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

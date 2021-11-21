@@ -36,11 +36,14 @@ public class ExamComposerController {
     public Exam createExam(@RequestBody Map<String, Integer> examSpec) {
         List<Section> sections = examSpec.entrySet().stream().map(entry -> {
             String title = entry.getKey();
-                String url = "http://" +title+ "/exercise/random?amount=" + entry.getValue();
+            String url = getServiceUrl(title, entry.getValue());
             Exercise[] exercises = restTemplate.getForObject(url, Exercise[].class);
             return Section.builder().exercises(Arrays.asList(exercises)).title(title).build();
         }).collect(toList());
         return Exam.builder().sections(sections).title("Best exam #" + number++).build();
+    }
 
+    public String getServiceUrl(final String service, final int amount) {
+        return "http://" + service + "/exercise/random?amount=" + amount;
     }
 }
