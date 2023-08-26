@@ -33,7 +33,7 @@ public class HistoryExerciseServiceImpl implements HistoryExerciseService {
     public List<Exercise> getRandom(int amount) {
         List<Exercise> all = dao.findAll();
         Collections.shuffle(all);
-        return all.subList(0,amount);
+        return all.subList(0, amount);
     }
 
     @Override

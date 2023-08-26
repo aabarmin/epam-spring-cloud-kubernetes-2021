@@ -3,6 +3,10 @@ package com.naya.exams.examinator.controllers;
 import com.naya.exams.examinator.model.Exam;
 import com.naya.exams.examinator.model.Exercise;
 import com.naya.exams.examinator.model.Section;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +36,25 @@ public class ExamComposerController {
         this.restTemplate = restTemplate;
     }
 
+    @Operation(
+            summary = "Generate questions for the exam",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    required = true,
+                    description = "Disciplines to generate questions for",
+                    content = @Content(
+                            schema = @Schema(implementation = Map.class),
+                            examples = @ExampleObject(
+                                    name = "Default request body",
+                                    value = """
+                                            {
+                                            "math": 10,
+                                            "history": 1
+                                            }
+                                            """
+                            )
+                    )
+            )
+    )
     @PostMapping("/exam")
     public Exam createExam(@RequestBody Map<String, Integer> examSpec) {
         List<Section> sections = examSpec.entrySet().stream().map(entry -> {
